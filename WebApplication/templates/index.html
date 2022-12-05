@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>    
+<title>Cyberbullying Detection</title>
+</head>
+{% extends 'base_user.html' %}
+{% block content%}
+    <body>
+
+        <br/>
+        <h1>Cyberbullying Detection</h1>
+        <br/>
+        <p class="fs-5 fw-normal"> Users can input a message to find out if it is cyberbullying text. It will 
+            also display the abusive words found and the likelihood of the cyberbullying of the message.
+
+    <div class="shadow-sm p-3 mb-5 bg-body rounded">
+        <form method="post">
+            <br/>
+            {{ cForm.hidden_tag() }} 
+
+            {{ cForm.msg.label(class = "form-label") }} <!--follow the label define in app.py-->
+            
+            {{ cForm.msg(class="form-control") }} <!-- user input-->
+            
+            <br/>
+            {{ cForm.submit(class="btn btn-dark") }}
+        </form>
+    </div>
+
+    <br/>
+
+    <hr border-top: 3px solid #bbb>
+
+    <br/>
+
+    <h1>Results</h1>
+
+    <div>
+        <br/>
+        <p name="abusiveWord" id="abusiveWord" class="fw-normal"> Abusive Word: {{abusive_word}}</p> <br/><br/>
+        <p name="result" id="result" class="fw-normal"> Classification Results: {{cyberbullying}} </p> <br/><br/>
+        <p name="likelihood" id="likelihood" class="fw-normal"> Likelihood: {{likelihood}}</p> <br/>
+    </div>
+
+    </body>
+
+{% endblock %}
+</html>

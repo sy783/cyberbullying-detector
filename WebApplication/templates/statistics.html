@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Statistics Page</title>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+<style type="text/css">
+        .table {
+            margin: 0 auto;
+            width: 80%;
+        }
+</style>
+
+</head>
+    {% extends 'base_admin.html' %}
+    {% block content%} 
+    
+        <h1>Statistics</h1>
+        <br/>
+        <p class="fs-5 fw-normal"> This page will display the data collected from the Blog page. It is to 
+            identify the posts that might be a cyberbullying post.
+        </p>
+        <br/>
+        <br/>
+
+        <!--Display Cyberbullying Posts-->
+        <div>
+          <h4> List of Cyberbullying Posts</h4>
+          
+            <table class="table table-responsive table-bordered border-dark w-auto">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Username</th>
+                  <th scope="col">Post</th>
+                  <th scope="col">Likelihood</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for cypost in cyberbullyingPost %}
+                <tr>
+                  <td>{{ cypost.username }}</td>
+                  <td>{{ cypost.content}}</td>
+                  <td>{{ cypost.likelihood }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+        <br/>
+        <br/>
+
+        <!--Display Abusive Words-->
+        <div>
+          <h4> List of Abusive Words</h4>
+          
+            <table class="table table-responsive table-bordered border-dark w-auto">
+              <thead class="table-dark">
+                <tr>
+                  <th>Abusive Words</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for w in words %}
+                <tr>
+                  <td> {{ w.abusive_word }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+
+    </div>
+    {% endblock %}
+    </body>
+    
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blog Post Page</title>
+</head>
+{% extends 'base_user.html' %}
+{% block content%}
+    <body>
+        <h1>Blog</h1>
+        <br/>
+        <p class="fs-5 fw-normal"> Users can create posts to simulate a social media site. The 
+            posts that are created would be shown below.
+        </p>
+        <br/>
+        <br/>
+
+        <div class="shadow-sm p-3 mb-5 bg-body rounded">
+        <h4>Create Post</h4>
+        <form method="POST">
+            
+            {{ form.hidden_tag() }} 
+
+            {{ form.user.label(class = "form-label") }} <!--follow the label define in app.py-->
+            
+            {{ form.user(class="form-control") }} <!-- user input-->
+            
+            <br/>
+            {{ form.content.label(class = "form-label") }}
+            
+            {{ form.content(class="form-control") }}
+            <br/>
+            
+            {{ form.submit(class="btn btn-dark") }}
+            
+        </form>	
+
+        </div>
+        
+        <br/>
+
+        <hr border-top: 3px solid #bbb><br/>
+
+        <h4> All Posts</h4><br/>
+
+        <div>
+                {% for post in posts %}
+
+
+                    <div class="d-flex flex-column mb-3 border border-success p-2 p-3 mb-2 bg-light text-dark" style="--bs-border-opacity: .5">
+                        <div class="p-2 fw-bold">{{post.username}}</div>
+                        <div class="p-2 fs-5 fw-normal">{{post.content}}</div>
+                    </div>
+
+                {% endfor %}
+        </div>
+    
+    </body>
+
+{% endblock %}
+</html>
